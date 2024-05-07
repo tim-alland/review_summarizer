@@ -17,11 +17,12 @@ with tab1:
     # Input control for filtering by partial name
     url = st.text_input("Copy and paste the url here", "")
 
-    reviews = scraper.scrape(url)
-    summary = summaryllm.get_summary(reviews, model)
-    summary
+    if st.button("Get Reviews Summary"):
+        reviews = scraper.scrape(url)
+        summary = summaryllm.get_summary(reviews, model)
+        summary
 
 with tab2:
-    "# More Info"
+    "# How it works"
 
     "The LLM being employed is Meta's llama-3-70b-instruct. This LLM pipeline works by scraping reviews from the Amazon url and passing them to the LLM to distill each one down to a principal complaint or praise. Then, it passes these distilled versions back into the LLM again where it consolidates similar reviews and provides an overarching summary."
