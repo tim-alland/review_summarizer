@@ -1,10 +1,10 @@
 from replicate.client import Client
 import os
 
-replicate = Client(api_token=os.environ['REPLICATE_API_TOKEN'])
 
 # Takes a series of reviews and a model name
-def get_summary(reviews, model):
+def get_summary(reviews, model, key):
+    replicate = Client(api_token=key)
     init_sum = []
     for review in reviews:
     # The meta/meta-llama-3-70b-instruct model can stream output as it's running.
