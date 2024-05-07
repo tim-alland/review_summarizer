@@ -6,6 +6,8 @@ model = "meta/meta-llama-3-70b-instruct"
 
 tab1, tab2 = st.tabs(['Home', "More Info"])
 
+key = st.secrets["REPLICATE_API_TOKEN"]
+
 with tab1:
     st.title("Amazon Reviews Summarizer")
     st.write("🚀 Instead of scouring reviews yourself, let this LLM pipeline do it for you!")
@@ -19,7 +21,7 @@ with tab1:
 
     if st.button("Get Reviews Summary"):
         reviews = scraper.scrape(url)
-        summary = summaryllm.get_summary(reviews, model)
+        summary = summaryllm.get_summary(reviews, model, key)
         summary
 
 with tab2:
