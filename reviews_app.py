@@ -1,12 +1,13 @@
 import streamlit as st
 import scraper
 import summaryllm
+import os
 
 model = "meta/meta-llama-3-70b-instruct"
 
 tab1, tab2 = st.tabs(['Home', "More Info"])
 
-key = st.secrets["REPLICATE_API_TOKEN"]
+key = os.environ["REPLICATE_API_TOKEN"]
 
 with tab1:
     st.title("Amazon Reviews Summarizer")
