@@ -1,7 +1,3 @@
 # Summary
 
-The goal is to create a usable interface where the input is a url of a product page or reviews page on Amazon and the output is a summary of it's reviews with careful attention to what users did and didn't like about it. In the backend, it should utilize an LLM. There is lots of room for customization, but for now, that is our goal.
-
-## To Do:
-* Write code / Learn how to scrape reviews from Amazon 
-* Construct a function that can input a sequence of reviews and return a summary of them.
+reviews_app.py is a script that, when run with a Replicate API Token, will take summarize the 1, 2, 3, 4, or 5 star reviews of an Amazon product. When reviews_app.py is run, it asks for the user to input the URL of an Amazon product's reviews. It then scrapes the review information using Selenium and BeautifulSoup. These are then passed to Meta's Llama 3 70B Instruct LLM via Replicate's API. The summarization is done by first distilling each review to a single core complaint or praise and then summarizes these distilled versions, grouping similar reviews together.
